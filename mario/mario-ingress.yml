@@ -8,9 +8,9 @@ metadata:
 spec:
   tls:
     - hosts:
-        - mario.carsonisawesome.com
+        - mario.carsonanderson.net
   rules:
-  - host: mario.carsonisawesome.com
+  - host: mario.carsonanderson.net
     http:
       paths:
       - backend:
