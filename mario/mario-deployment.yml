@@ -23,7 +23,3 @@ spec:
           limits:
             memory: '1024Mi'
             cpu: '1000m'
-        securityContext:
-          allowPrivilegeEscalation: false
-          runAsUser: 2001
-          runAsGroup: 2001
