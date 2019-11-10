@@ -15,5 +15,5 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: nolan-service
+          serviceName: random-service
           servicePort: http
