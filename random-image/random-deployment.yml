@@ -1,0 +1,46 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: random-deployment
+  namespace: random
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: random
+  template:
+    metadata:
+      labels:
+        app: random
+    spec:
+      serviceAccountName: s3downloader
+      volumes:
+        - name: images-volume
+          emptyDir: {}
+      containers:
+      - name: random-container 
+        image: rcanderson23/random-image:v1
+        command:
+        - /random_image
+        resources:
+          requests:
+            memory: '256Mi'
+            cpu: '250m'
+          limits:
+            memory: '1024Mi'
+            cpu: '1000m'
+        volumeMounts:
+        - mountPath: /images
+          name: images-volume
+      initContainers:
+      - name: s3-downloader
+        image: rcanderson23/s3downloader:v1
+        command:
+        - /s3downloader
+        - -bucket=andarob-bucket
+        - -image-dir=images
+        - -key=nolan
+        - -region=us-east-2
+        volumeMounts:
+        - mountPath: /images
+          name: images-volume
