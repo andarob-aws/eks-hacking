@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: k8s-mario
-  namespace: external
+  namespace: mario
   labels:
     traffic-type: external
 spec:
