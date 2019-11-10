@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: k8s-mario
+  namespace: external
+  labels:
+    traffic-type: external
+spec:
+  rules:
+  - host: mario.as-a-service.co
+    http:
+      paths:
+      - backend:
+          serviceName: mario-service
+          servicePort: http
